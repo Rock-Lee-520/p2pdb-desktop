@@ -1,0 +1,86 @@
+{{template "common/header.html" .}}
+
+{{template "common/sidebar.html" .}}
+      <!-- #Main ============================ -->
+      <div class="page-container">
+        <!-- ### $Topbar ### -->
+        {{template "common/topbar.html" .}}
+<!-- 
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll"> -->
+        <!-- <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <li class="layui-nav-item" value="0">
+                <a class="one" href="javascript:;">经销商信息</a>
+            </li>
+            <li class="layui-nav-item" value="1">
+                <a class="two" href="javascript:;">销售订单信息</a>
+            </li>
+            <li class="layui-nav-item" value="2">
+                <a class="three" href="javascript:;">商品分配信息</a>
+            </li>
+            <li class="layui-nav-item" value="3">
+                <a class="four" href="javascript:;">经销商利润信息</a>
+            </li>
+        </ul>
+    </div>
+  </div> -->
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <iframe id="iframe_0" src="index.html" style="padding: 0px; width: 100%;height: 100%;" frameborder="no" border="0" scrolling="yes"
+        allowtransparency="yes">
+    </iframe>
+  </div>
+  {{template "common/footer.html" .}}
+
+
+
+
+  <script  src="static/js/jquery-3.6.1.min.js"></script>
+<script>
+$(function(){
+   // alert($);
+   var iframeHeight = $(window).height()*0.9;
+$("#iframe_0").height(iframeHeight);
+ 
+    $(".sidebar-menu").on("click","li",function(){
+       // $(this).addClass("hover").siblings("li").removeClass("hover");
+        console.log($(this).attr("value"));
+        console.log($(this));
+      
+        document.getElementById("iframe_0").src=$(this).attr("value");
+      //  return false;
+        // $(".one").removeClass("one_c");
+        // $(".two").removeClass("two_c");
+        // $(".three").removeClass("three_c");
+        // $(".four").removeClass("four_c");
+        // switch($(this).val())
+        // {
+        //     case 0:
+        //         $(".one").addClass("one_c");
+        //         document.getElementById("iframe_0").src="index.html";
+        //         break;
+        //     case 1:
+        //         $(".two").addClass("two_c");
+        //         document.getElementById("iframe_0").src="email.html";
+        //         break;
+        //     case 2:
+        //         $(".three").addClass("three_c");
+        //         document.getElementById("iframe_0").src="compose.html";
+        //         break;
+        //     case 3:
+        //         $(".four").addClass("four_c");
+        //         document.getElementById("iframe_0").src="../../cigarette/page/profit/list.html";
+        //         break;
+        //     default:
+        //         break;
+        // }
+        // if($(this).val()=='0'){
+        //     $(".one").addClass("one_c");
+        // }
+    }).find('li:first').trigger('click');
+
+});
+   
+
+</script>

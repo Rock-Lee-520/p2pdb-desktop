@@ -1,0 +1,45 @@
+
+  <script  src="static/js/jquery-3.6.1.min.js"></script>
+<script>
+$(function(){
+    alert($);
+   var iframeHeight = $(window).height()*0.9;
+$("#iframe_0").height(iframeHeight);
+ 
+    $(".layui-side-scroll").on("click","li",function(){
+        $(this).addClass("hover").siblings("li").removeClass("hover");
+ 
+        $(".one").removeClass("one_c");
+        $(".two").removeClass("two_c");
+        $(".three").removeClass("three_c");
+        $(".four").removeClass("four_c");
+        switch($(this).val())
+        {
+            case 0:
+                $(".one").addClass("one_c");
+                document.getElementById("iframe_0").src="index.html";
+                break;
+            case 1:
+                $(".two").addClass("two_c");
+                document.getElementById("iframe_0").src="email.html";
+                break;
+            case 2:
+                $(".three").addClass("three_c");
+                document.getElementById("iframe_0").src="compose.html";
+                break;
+            case 3:
+                $(".four").addClass("four_c");
+                document.getElementById("iframe_0").src="../../cigarette/page/profit/list.html";
+                break;
+            default:
+                break;
+        }
+        if($(this).val()=='0'){
+            $(".one").addClass("one_c");
+        }
+    }).find('li:first').trigger('click');
+
+});
+   
+
+</script>

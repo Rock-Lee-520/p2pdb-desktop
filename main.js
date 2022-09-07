@@ -19,7 +19,7 @@ class AppWindow extends BrowserWindow {
 }
 
 app.on('ready', () => {
-  const urlLocation = isDev ? 'http://localhost:5000/' : 'are you ok'
+  const urlLocation = isDev ? 'https://teamshare.kkguan.com' : 'are you ok'
   const mainWindow = new AppWindow({})
   mainWindow.loadURL(urlLocation)
 })

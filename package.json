@@ -9,7 +9,7 @@
   "scripts": {
     "electron-start": "webpack server",
     "electron-dev": "electron .",
-    "electron": "concurrently \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:5000 && npm run electron-dev\"",
+    "electron": "concurrently  \"wait-on https://teamshare.kkguan.com && npm run electron-dev\"",
     "start": "webpack server",
     "dev": "webpack-dashboard -t 'Project' -- webpack server",
     "clean": "shx rm -rf ./dist",

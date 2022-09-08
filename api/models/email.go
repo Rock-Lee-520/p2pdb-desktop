@@ -2,6 +2,7 @@ package models
 
 import (
 	"github.com/astaxie/beego/orm"
+	"github.com/pingcap/log"
 )
 
 const (
@@ -28,7 +29,8 @@ func (t *Emails) TableName() string {
 	return "emails"
 }
 
-func init() {
+func (t *Emails) InitTable() {
+	log.Info("call method initTable=====")
 	orm.RegisterModel(new(Emails))
 	//orm.RegisterModel(new(Attributes))
 }

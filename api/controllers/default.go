@@ -29,3 +29,8 @@ func (this *MainController) Compose() {
 
 	this.TplName = "compose.html"
 }
+
+func (this *MainController) Chat() {
+
+	this.TplName = "chat.html"
+}

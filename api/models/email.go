@@ -15,14 +15,15 @@ const (
 )
 
 type Emails struct {
-	Id          uint64 `orm:"column(id)"`
-	Title       string `orm:"column(title)"`
-	Topic       string `orm:"column(parent_id)"`
-	Content     string `orm:"column(user_id)"`
-	Status      string `orm:"column(status)"`
-	Username    string `orm:"column(username)"`
-	CreatedTime string `orm:"column(created_time);type(timestamp);null"`
-	UpdatedTime string `orm:"column(updated_time);type(timestamp);null"`
+	Id             uint64 `orm:"column(id)"`
+	Title          string `orm:"column(title)"`
+	Topic          string `orm:"column(topic)"`
+	SentPeerId     string `orm:"column(sent_peer_id)"`
+	ReceivedPeerId string `orm:"column(received_peer_id)"`
+	Status         string `orm:"column(status)"`
+	Username       string `orm:"column(username)"`
+	CreatedTime    string `orm:"column(created_time);type(timestamp);null"`
+	UpdatedTime    string `orm:"column(updated_time);type(timestamp);null"`
 }
 
 func (t *Emails) TableName() string {

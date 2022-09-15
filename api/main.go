@@ -12,6 +12,7 @@ import (
 func init() {
 	// need to register models in init
 	orm.RegisterModel(new(models.Emails))
+	orm.RegisterModel(new(models.Configs))
 
 	// need to register default database
 	orm.RegisterDataBase("default", "mysql", "root:@tcp(127.0.0.1:3306)/p2pdb")

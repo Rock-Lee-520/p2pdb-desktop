@@ -23,12 +23,12 @@ func (c *MainController) Index() {
 
 func (this *MainController) Email() {
 
-	this.TplName = "email.html"
+	this.TplName = "email/email.html"
 }
 
 func (this *MainController) Compose() {
 
-	this.TplName = "compose.html"
+	this.TplName = "email/compose.html"
 }
 
 func (this *MainController) Chat() {

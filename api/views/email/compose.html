@@ -17,25 +17,51 @@
                         <i class="ti-menu"></i>
                       </a>
                     </div>
-                    <form class="email-compose-body">
+                    <form class="email-compose-body"  >
                       <h4 class="c-grey-900 mB-20">Send Message</h4>
                       <div class="send-header">
+                        <fieldset class="mb-3">
+                          <div class="row">
+                            <legend class="col-form-legend col-sm-10">Transmit Mode</legend>
+                            <div class="col-sm-4">
+                              <div class="form-check">
+                                <label class="form-label form-check-label">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="checked">
+                                  Send  a message to a email group 
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <label class="form-label form-check-label">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                   Send  a message by peer-to-peer 
+                                </label>
+                              </div>
+                              <!-- <div class="form-check disabled">
+                                <label class="form-label form-check-label">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled="disabled">
+                                  Option three is disabled
+                                </label>
+                              </div> -->
+                            </div>
+                          </div>
+                        </fieldset>
+
                         <div class="mb-3">
-                          <input type="text" class="form-control" placeholder="Topic">
+                          <input type="text" class="form-control"  name="Topic" placeholder="Topic">
                         </div>
                         <div class="mb-3">
-                          <input type="text" class="form-control" placeholder="input peerId to only one preson or be empty">
+                          <input type="text" name="peerid" class="form-control" placeholder="input peerId to only one preson or be empty">
                         </div>
                         <div class="mb-3">
-                          <input class="form-control" placeholder="Email Subject">
+                          <input class="form-control" name="Title" placeholder="Email Title">
                         </div>
                         <div class="mb-3">
-                          <textarea name="compose" class="form-control" placeholder="Say Hi..." rows="10"></textarea>
+                          <textarea name="content" class="form-control" placeholder="Say something..." rows="10"></textarea>
                         </div>
                       </div>
                       <div id="compose-area"></div>
                       <div class="text-end mrg-top-30">
-                        <button class="btn btn-danger btn-color">Send</button>
+                        <span class="btn btn-danger btn-color" id="send">Send</button>
                       </div>
                     </form>
                   </div>
@@ -44,4 +70,83 @@
               </div>
             </div>
           </div>
+          <div class="masonry-item col-md-10">
+            <div class="bgc-white p-20 bd">
+              <h6 class="c-grey-1200">Alerts</h6>
+              <div class="mT-30">
+             
+                <div id="success" class="alert alert-success" role="alert" style="display: none;">
+                  This is a success alert—check it out!
+                </div>
+                <div id="error" class="alert alert-danger" role="alert" style="display: none;">
+                  This is a danger alert—check it out!
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
+        <script  src="static/js/jquery-3.6.1.min.js"></script>
+        <script>
+
+       
+     
+
+        $('#send').click(function() {
+          var test = 100; 
+          $.ajax({
+            url: '/send-email', //当前ajax请求的地址
+            type: 'post', //请求的方式
+            async: true, //是否异步 默认为异步
+            data: {
+              Topic: 400,
+              Title: 500,
+              Content: 500
+            }, //当前ajax请求的参数 
+            success: function(data) { //发送成功时的代码执行
+              if(data && data.code==1000){
+                $('#success').text(data.message);  
+                $('#success').show();
+                setTimeout('delayer()', 2000);
+              }
+              console.log(data)
+              
+            },
+            error: function() { //失败时的代码执行
+
+            },
+            timeout: 2000, //超时时间 事件单位毫秒  只有异步的时候 有效
+
+          
+          }) //接受一个对象类型的值
+          // alert(test);
+
+        });
+
+        function delayer(){
+           window.location = "/email";
+        }
+
+
+    //       var ajax = $.ajax;
+    // $.extend({
+    //   ajax: function (url, options) {
+    //     if (typeof url === "object") {
+    //       options = url;
+    //       url = undefined;
+    //     }
+    //     options = options || {};
+    //     url = options.url;
+    //     var xsrftoken = $("meta[name=_xsrf]").attr("content");
+    //     var headers = options.headers || {};
+    //     var domain = document.domain.replace(/\./gi, "\\.");
+    //     if (
+    //       !/^(http:|https:).*/.test(url) ||
+    //       eval("/^(http:|https:)\\/\\/(.+\\.)*" + domain + ".*/").test(url)
+    //     ) {
+    //       headers = $.extend(headers, { "X-Xsrftoken": xsrftoken });
+    //     }
+    //     options.headers = headers;
+    //     return ajax(url, options);
+    //   },
+    // });
+        </script>

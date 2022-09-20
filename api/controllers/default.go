@@ -21,16 +21,6 @@ func (c *MainController) Index() {
 	c.TplName = "index.html"
 }
 
-func (this *MainController) Email() {
-
-	this.TplName = "email/email.html"
-}
-
-func (this *MainController) Compose() {
-
-	this.TplName = "email/compose.html"
-}
-
 func (this *MainController) Chat() {
 
 	this.TplName = "chat.html"

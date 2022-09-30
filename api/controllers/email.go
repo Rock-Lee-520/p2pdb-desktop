@@ -42,11 +42,13 @@ func (this *MainController) SendEmail() {
 	email.Status = models.SENT
 	email.SentPeerId = function.GetLocalPeerId()
 	email.ReceivedPeerId = Peerid
+	email.Id = uint64(function.GetSnowflakeId())
 	id, err := email.Insert()
-	if err != nil {
-		this.Data["json"] = map[string]string{"code": "2000", "message": "Sending email is success", "data": string(id)}
+	log.Debug(id)
+	if err == nil {
+		this.Data["json"] = map[string]string{"code": "2000", "message": "Sending email is success", "data": string(function.GetSnowflakeId())}
 	} else {
-		this.Data["json"] = map[string]string{"code": "2000", "message": "Sending email is error", "data": ""}
+		this.Data["json"] = map[string]string{"code": "2000", "message": err.Error(), "data": ""}
 	}
 
 	//&ReturnData{code: 1000, message: "Sending email is success", data: ""}

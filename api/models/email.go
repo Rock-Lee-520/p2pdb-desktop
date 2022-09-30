@@ -15,17 +15,17 @@ const (
 )
 
 type Emails struct {
-	//Id             string `orm:"pk;column(id)"`
-	EmailId        string `orm:"pk;column(email_id)"`
-	Title          string `orm:"column(title)"`
-	Topic          string `orm:"column(topic)"`
-	Content        string `orm:"column(content)"`
-	SentPeerId     string `orm:"column(sent_peer_id)"`
-	ReceivedPeerId string `orm:"column(received_peer_id)"`
-	Status         string `orm:"column(status)"`
-	Username       string `orm:"column(username)"`
-	CreatedTime    string `orm:"column(created_time);type(timestamp);null"`
-	UpdatedTime    string `orm:"column(updated_time);type(timestamp);null"`
+	Id             uint64 `orm:"column(id)"`
+	EmailId        string `orm:"column(email_id)"`
+	Title          string `orm:"null;column(title)"`
+	Topic          string `orm:"null;column(topic)"`
+	Content        string `orm:"null;column(content)"`
+	SentPeerId     string `orm:"null;column(sent_peer_id)"`
+	ReceivedPeerId string `orm:"null;column(received_peer_id)"`
+	Status         string `orm:"null;column(status)"`
+	Username       string `orm:"null;column(username)"`
+	CreatedTime    string `orm:"null;column(created_time);type(timestamp);null"`
+	UpdatedTime    string `orm:"null;column(updated_time);type(timestamp);null"`
 }
 
 func (t *Emails) TableName() string {
@@ -41,7 +41,7 @@ func (t *Emails) InitTable() {
 func (t *Emails) Insert() (int64, error) {
 	var Ormer orm.Ormer
 	Ormer = orm.NewOrm()
-	email := new(Emails)
-	id, err := Ormer.Insert(email)
+	log.Debug(t)
+	id, err := Ormer.Insert(t)
 	return id, err
 }

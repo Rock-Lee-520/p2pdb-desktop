@@ -47,16 +47,16 @@
                         </fieldset>
 
                         <div class="mb-3">
-                          <input type="text" class="form-control"  name="Topic" placeholder="Topic">
+                          <input type="text" id="topic" class="form-control"  name="topic" placeholder="Topic">
                         </div>
                         <div class="mb-3">
-                          <input type="text" name="peerid" class="form-control" placeholder="input peerId to only one preson or be empty">
+                          <input type="text"  id="peerid"   name="peerid" class="form-control" placeholder="input peerId to only one preson or be empty">
                         </div>
                         <div class="mb-3">
-                          <input class="form-control" name="Title" placeholder="Email Title">
+                          <input class="form-control"  id="title" name="Title" placeholder="Email Title">
                         </div>
                         <div class="mb-3">
-                          <textarea name="content" class="form-control" placeholder="Say something..." rows="10"></textarea>
+                          <textarea name="content"  id="content"  class="form-control" placeholder="Say something..." rows="10"></textarea>
                         </div>
                       </div>
                       <div id="compose-area"></div>
@@ -92,15 +92,21 @@
      
 
         $('#send').click(function() {
-          var test = 100; 
+         
+          var topic=$('#topic').val();
+          var title=$('#title').val();
+          var content=$('#content').val();
+          var peerid=$('#peerid').val();
+
           $.ajax({
             url: '/send-email', //当前ajax请求的地址
             type: 'post', //请求的方式
             async: true, //是否异步 默认为异步
             data: {
-              Topic: 400,
-              Title: 500,
-              Content: 500
+              topic: topic,
+               title: title,
+               content: content,
+               peerid:peerid
             }, //当前ajax请求的参数 
             success: function(data) { //发送成功时的代码执行
               if(data && data.code==1000){

@@ -21,7 +21,7 @@ type ReturnData struct {
 // @Title SendEmail
 // @Description Logs out current logged in user session
 // @Success 200 {interface} SendEmail success
-// @router /send-email [post]
+// @router /send-email [get]
 func (this *MainController) SendEmail() {
 	Topic := this.GetString("Topic")
 
@@ -29,8 +29,9 @@ func (this *MainController) SendEmail() {
 	Content := this.GetString("Content")
 	Username := "rock"
 	Peerid := this.GetString("peerid")
-	log.Debug(Topic)
-	log.Debug(Title)
+	this.Ctx.WriteString("Hello " + Title)
+	log.Debug(this.GetString("Title"))
+	log.Debug(this.GetString("Content"))
 	log.Debug(Content)
 
 	email := new(models.Emails)

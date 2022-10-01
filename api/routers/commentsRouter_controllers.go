@@ -11,7 +11,7 @@ func init() {
         beego.ControllerComments{
             Method: "SendEmail",
             Router: "/send-email",
-            AllowHTTPMethods: []string{"post"},
+            AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

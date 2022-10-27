@@ -2,7 +2,7 @@
 这是一个用于P2PDB Demo 演示及案例演示的项目
 
 
-![avatar](//show.png)
+![avatar](./show.png)
 
 ## 使用
 ```go

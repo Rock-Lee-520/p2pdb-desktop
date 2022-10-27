@@ -19,7 +19,7 @@ type Emails struct {
 	EmailId        string `orm:"column(email_id)"`
 	Title          string `orm:"null;column(title)"`
 	Topic          string `orm:"null;column(topic)"`
-	Content        string `orm:"null;column(content)"`
+	Content        string `orm:"null;column(content);type(text);null"`
 	SentPeerId     string `orm:"null;column(sent_peer_id)"`
 	ReceivedPeerId string `orm:"null;column(received_peer_id)"`
 	Status         string `orm:"null;column(status)"`

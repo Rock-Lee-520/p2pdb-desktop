@@ -23,15 +23,15 @@ type ReturnData struct {
 // @Success 200 {interface} SendEmail success
 // @router /send-email [get]
 func (this *MainController) SendEmail() {
-	Topic := this.GetString("Topic")
+	Topic := this.GetString("topic")
 
-	Title := this.GetString("Title")
-	Content := this.GetString("Content")
+	Title := this.GetString("title")
+	Content := this.GetString("content")
 	Username := "rock"
 	Peerid := this.GetString("peerid")
-	this.Ctx.WriteString("Hello " + Title)
-	log.Debug(this.GetString("Title"))
-	log.Debug(this.GetString("Content"))
+	//this.Ctx.WriteString("Hello " + Title)
+	log.Debug(this.GetString("title"))
+	log.Debug(this.GetString("content"))
 	log.Debug(Content)
 
 	email := new(models.Emails)
@@ -47,7 +47,7 @@ func (this *MainController) SendEmail() {
 	id, err := email.Insert()
 	log.Debug(id)
 	if err == nil {
-		this.Data["json"] = map[string]string{"code": "2000", "message": "Sending email is success", "data": string(function.GetSnowflakeId())}
+		this.Data["json"] = map[string]string{"code": "1000", "message": "Sending email is success", "data": string(id)}
 	} else {
 		this.Data["json"] = map[string]string{"code": "2000", "message": err.Error(), "data": ""}
 	}
